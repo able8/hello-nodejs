@@ -525,3 +525,21 @@ req.on("error", function (err) {
 // data.push(chunk)
 // data = Buffer.concat(data).toString()
 ```
+
+## 16.包管理器npm
+
+- [npm 官网](https://www.npmjs.com)
+    - [搜索查看 express](https://www.npmjs.com/package/express)
+
+- `npm install -g xxx` 全局安装可执行文件，当作命令行工具
+- 使用国内源，解决慢的问题
+
+```sh
+# Or alias it in .bashrc or .zshrc
+echo '\n#alias for npm\nalias npm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/npm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.npmrc"' >> ~/.zshrc && source ~/.zshrc
+```
+
+- yarn 也是包管理器，更快下载速度
