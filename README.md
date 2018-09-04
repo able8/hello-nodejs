@@ -387,7 +387,7 @@ server.listen(3000, '127.0.0.1')
 console.log('server started on http://127.0.0.1:3000')
 ```
 
-## 9.web 服务器 part2 响应JSON
+## 10.web 服务器 part2 响应JSON
 
 - 响应JSON
 
@@ -407,3 +407,22 @@ var myObj = {
     - JSON对象是 JavaScript 的原生对象，用来处理 JSON 格式数据
     - JSON.stringify方法用于将一个值转为 JSON 字符串
     - JSON.parse方法用于将 JSON 字符串转换成对应的值
+
+## 11.web 服务器 part3 响应HTML页面
+
+```js
+var http = require('http')
+var fs = require('fs')
+
+var onRequest = function (req, res) {
+    console.log('request received')
+    res.writeHead(200, { 'Content-Type': 'text/html' })
+    // res.writeHead(200, { 'Content-Type': 'text/plain' })
+    var myReadStream = fs.createReadStream(__dirname + '/index.html', 'utf8')
+    myReadStream.pipe(res)
+}
+
+var server = http.createServer(onRequest)
+server.listen(3000)
+console.log('server started on http://127.0.0.1:3000')
+```
