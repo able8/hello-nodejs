@@ -498,3 +498,30 @@ unction startServer() {
 
 ## 15.web 服务器 part7 使用GET或POST请求 发送数据
 
+- [querystring - 查询字符串](http://nodejs.cn/api/querystring.html)
+    - `var querystring = require('querystring')`
+    - `querystring.parse(data)` 把一个 URL 查询字符串 str 解析成一个键值对的集合
+
+```js
+// 接收请求数据，然后处理，查看request 类型
+var data = ""
+req.on("error", function (err) {
+    console.error(err)
+}).on("data", function (chunk) {
+    data += chunk
+}).on("end", function () {
+    if (req.mothod === "POST") {
+        if (data.length > 1e6) {
+            req.connection.destroy() // 如果数据很大，就断开
+        }
+        route(handle, pathname, res, querystring.parse(data))
+    } else {
+        var params = url.parse(req.url, true).query
+        route(handle, pathname, res, params)
+    }
+})
+// 或者
+// var data = []
+// data.push(chunk)
+// data = Buffer.concat(data).toString()
+```
