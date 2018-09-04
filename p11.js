@@ -9,7 +9,7 @@ var onRequest = function (req, res) {
     myReadStream.pipe(res)
 }
 
-var server = http.createServer(onRequest)
+var server = http.createServer(onReque st)
 server.listen(3000)
 console.log('server started on http://127.0.0.1:3000')
 
