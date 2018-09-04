@@ -1,9 +1,12 @@
 var http = require('http')
+var url = require('url')
 
 function startServer(route, handle) {
     var onRequest = function (req, res) {
         console.log('request received ' + req.url)
-        route(handle ,req.url, res)
+        var pathname = url.parse(req.url).pathname
+        var params = url.parse(req.url, true).query
+        route(handle, pathname, res, params)
     }
     var server = http.createServer(onRequest)
     server.listen(3000)
