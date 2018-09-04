@@ -78,7 +78,7 @@ Make sure that /usr/local/bin is in your $PATH.
 
 - 全局对象
     - 不用导入，直接使用的对象
-    - [文档](http://nodejs.cn/api/globals.html#globals_global_objects)
+    - [官方文档](http://nodejs.cn/api/globals.html#globals_global_objects)
     - Buffer 类，用于处理二进制数据
     - console，用于打印 stdout 和 stderr
     - global, 全局的命名空间对象
@@ -98,6 +98,9 @@ Make sure that /usr/local/bin is in your $PATH.
     - exports
     - module
     - require()
+
+- 运行 `.js` 脚本文件
+    - `node app` 或者 `node app.js`
 
 - 实践代码
 
@@ -136,3 +139,33 @@ console.log(__filename)
 console.log('end')
 console.dir(global)
 ```
+
+## 3.回调函数
+
+```js
+function sayHi() {
+    console.log('Hi')
+}
+
+sayHi() // 调用函数
+
+// 将匿名函数赋给变量
+var sayBye = function (name) {
+    console.log(name + ' Bye')
+}
+
+sayBye()
+
+// 第一个参数是函数
+function callFunction(fun, name) {
+    fun(name)
+}
+
+callFunction(sayBye, 'able')
+// 或者
+callFunction(function (name) {
+    console.log(name + ' Bye')
+}, 'able')
+```
+
+
