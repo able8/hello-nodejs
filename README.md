@@ -20,6 +20,12 @@
 - [hello-nodejs](#hello-nodejs)
     - [1.课程介绍与开发环境搭建](#1%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
     - [2.全局对象](#2%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1)
+    - [3.回调函数](#3%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0)
+    - [4.模块](#4%E6%A8%A1%E5%9D%97)
+    - [5.事件 events](#5%E4%BA%8B%E4%BB%B6-events)
+    - [6.读写文件（同步和异步）](#6%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5)
+    - [7.创建和删除目录](#7%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95)
+    - [8.流和管道](#8%E6%B5%81%E5%92%8C%E7%AE%A1%E9%81%93)
 
 ---
 
@@ -361,4 +367,22 @@ myWriteStream.on('finish', function () {
 
 // 使用管道，代码量更少
 myReadStream.pipe(myWriteStream)
+```
+
+## 9.web 服务器 part1 介绍
+
+```js
+var http = require('http')
+
+var server = http.createServer(function (req, res) {
+    console.log('request received')
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    // res.write('Hello from out application')
+    // res.end()
+    // 或
+    res.end('Hello from out application')
+})
+
+server.listen(3000, '127.0.0.1')
+console.log('server started on http://127.0.0.1:3000')
 ```
