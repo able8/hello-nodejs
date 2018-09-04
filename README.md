@@ -222,3 +222,77 @@ console.log(stuff.counter(['ruby', 'nodejs', 'react']))
 console.log(stuff.adder(3, 2))
 console.log(stuff.pi)
 ```
+
+## 5.事件 events
+
+- 多数 Node.js 核心 API 都采用异步事件驱动架构
+- 所有能触发事件的对象都是 EventEmitter 类的实例
+- 事件名称通常是驼峰式的字符串
+
+- 实践代码
+
+```js
+var events = require('events')
+var util = require('util')
+
+// 事件 对象
+var myEmitter = new events.EventEmitter()
+
+// 绑定 事件名称 和 回调函数
+myEmitter.on('someEvent', function (message) {
+    console.log(message)
+})
+
+// 触发实践，使用事件名称
+myEmitter.emit('someEvent', 'The event was emitted')
+
+// 创建对象
+var Person = function (name) {
+    this.name = name
+}
+
+// 继承，让Person类具有事件对象的特性，绑定和触发事件
+util.inherits(Person, events.EventEmitter)
+// 新建对象
+var xiaoming = new Person('xiaoming')
+var lili = new Person('lili')
+
+var person = [xiaoming, lili]
+
+// 循环person数组，绑定事件
+person.forEach(function (person) {
+    person.on('speak', function (message) {
+        console.log(person.name + ' said: ' + message)
+    })
+})
+
+// 触发事件
+xiaoming.emit('speak', 'hi')
+lili.emit('speak', 'I want a curry')
+```
+
+## 6.读写文件（同步和异步）
+
+```js
+var fs = require('fs')
+
+// 同步读写文件，顺序执行，如果读取时间很长，会阻塞进程
+var readMe = fs.readFileSync('readMe.txt', 'utf8')
+fs.writeFileSync('writeMe.txt', readMe)
+
+console.log(readMe)
+console.log('finished sync')
+
+// 异步读写文件
+// 异步事件，Nodejs 维护一个事件队列，注册事件，完成后执行主线程
+// 当主线程空闲时，取出执行事件，从线程池中发起线程执行事件， 当事件执行完成后通知主线程。这就是异步高效的原因。
+
+var readMe = fs.readFile('readMe.txt', 'utf8', function (err, data) {
+    fs.writeFile('writeMe.txt', data, function () {
+        console.log('writeMe has finished')
+    })
+})
+
+console.log('end')
+```
+
