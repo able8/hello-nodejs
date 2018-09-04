@@ -298,7 +298,7 @@ console.log('end')
 
 ## 7.创建和删除目录
 
-- [API 文档](http://nodejs.cn/api/fs.html#fs_fs_unlink_path_callback)
+- [ fs - 文件系统 API 文档](http://nodejs.cn/api/fs.html#fs_fs_unlink_path_callback)
 
 ```js
 var fs = require('fs')
@@ -322,3 +322,43 @@ fs.mkdir('stuff', function () {
 })
 ```
 
+## 8.流和管道
+
+- 流（stream）
+    - 处理流式数据的抽象接口
+    - stream 模块提供了一些基础的 API，用于构建实现了流接口的对象
+    - 流可以是可读的、可写的、或是可读写的，所有的流都是 EventEmitter 的实例
+    - 流处理数据通过缓存可以提高性能
+
+- 管道
+    - 使用管道，代码量更少
+    - myReadStream.pipe(myWriteStream)
+
+```js
+var fs = require('fs')
+
+var myReadStream = fs.createReadStream(__dirname + '/readMe.txt')
+myReadStream.setEncoding('utf8')
+var myWriteStream = fs.createWriteStream(__dirname + '/writeMe.txt')
+var data = ''
+
+myReadStream.on('data', function (chunk) {
+    console.log('new chunk received')
+    // console.log(chunk)
+    myWriteStream.write(chunk)
+})
+
+myReadStream.on('end', function () {
+    console.log(data)
+})
+
+var writeData = 'hello world'
+myWriteStream.write(writeData)
+myWriteStream.end()
+myWriteStream.on('finish', function () {
+    console.log('finished')
+})
+
+// 使用管道，代码量更少
+myReadStream.pipe(myWriteStream)
+```
