@@ -490,3 +490,8 @@ unction startServer() {
     console.log('server started on http://127.0.0.1:3000')
 }
 ```
+
+## 14.web 服务器 part6 重构路由代码
+
+- 讲路由、处理函数、主程序分离，单独存放
+- 分工明确，各司其职，方便管理
