@@ -386,3 +386,24 @@ var server = http.createServer(function (req, res) {
 server.listen(3000, '127.0.0.1')
 console.log('server started on http://127.0.0.1:3000')
 ```
+
+## 9.web 服务器 part2 响应JSON
+
+- 响应JSON
+
+```js
+var myObj = {
+        name: 'able',
+        job: 'programmer',
+        age: 27
+    }
+    res.end(JSON.stringify(myObj))
+```
+
+- [JSON 对象](https://wangdoc.com/javascript/stdlib/json.html)
+    - 字符串必须使用双引号表示，不能使用单引号
+    - 对象的键名必须放在双引号里面
+    - 数组或对象最后一个成员的后面，不能加逗号
+    - JSON对象是 JavaScript 的原生对象，用来处理 JSON 格式数据
+    - JSON.stringify方法用于将一个值转为 JSON 字符串
+    - JSON.parse方法用于将 JSON 字符串转换成对应的值

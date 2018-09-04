@@ -2,11 +2,13 @@ var http = require('http')
 
 var server = http.createServer(function (req, res) {
     console.log('request received')
-    res.writeHead(200, { 'Content-Type': 'text/plain' })
-    // res.write('Hello from out application')
-    // res.end()
-    // 或
-    res.end('Hello from out application')
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    var myObj = {
+        name: 'able',
+        job: 'programmer',
+        age: 27
+    }
+    res.end(JSON.stringify(myObj))
 })
 
 server.listen(3000)
