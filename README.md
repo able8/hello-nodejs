@@ -17,8 +17,8 @@
 
 ---
 
-- [hello-nodejs](#hello-nodejs)
-    - [1.课程介绍与开发环境搭建](#1%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
+- [目录](#hello-nodejs)
+    - [1.介绍与开发环境搭建](#1%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
     - [2.全局对象](#2%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1)
     - [3.回调函数](#3%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0)
     - [4.模块](#4%E6%A8%A1%E5%9D%97)
@@ -74,7 +74,6 @@ Make sure that /usr/local/bin is in your $PATH.
 ```
 
 - Node.js 用途
-
     - javascript 运行环境
     - 操作文件（grunt gulp webpack）
     - 操作数据库
@@ -314,7 +313,7 @@ console.log('end')
 
 ## 7.创建和删除目录
 
-- [ fs - 文件系统 API 文档](http://nodejs.cn/api/fs.html#fs_fs_unlink_path_callback)
+- [fs - 文件系统 API 文档](http://nodejs.cn/api/fs.html#fs_fs_unlink_path_callback)
 
 ```js
 var fs = require('fs')
@@ -440,7 +439,6 @@ console.log('server started on http://127.0.0.1:3000')
 ## 12.web 服务器 part4 用模块化思想组织代码
 
 - 代码封装成模块，方便统一管理和调用
-
 
 ```js
 // server.js
