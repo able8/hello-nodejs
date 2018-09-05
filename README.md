@@ -26,6 +26,16 @@
     - [6.读写文件（同步和异步）](#6%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5)
     - [7.创建和删除目录](#7%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95)
     - [8.流和管道](#8%E6%B5%81%E5%92%8C%E7%AE%A1%E9%81%93)
+    - [9.web 服务器 part1 介绍](#9web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part1-%E4%BB%8B%E7%BB%8D)
+    - [10.web 服务器 part2 响应JSON](#10web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part2-%E5%93%8D%E5%BA%94json)
+    - [11.web 服务器 part3 响应HTML页面](#11web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part3-%E5%93%8D%E5%BA%94html%E9%A1%B5%E9%9D%A2)
+    - [12.web 服务器 part4 用模块化思想组织代码](#12web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part4-%E7%94%A8%E6%A8%A1%E5%9D%97%E5%8C%96%E6%80%9D%E6%83%B3%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81)
+    - [13.web 服务器 part5 路由](#13web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part5-%E8%B7%AF%E7%94%B1)
+    - [14.web 服务器 part6 重构路由代码](#14web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part6-%E9%87%8D%E6%9E%84%E8%B7%AF%E7%94%B1%E4%BB%A3%E7%A0%81)
+    - [15.web 服务器 part7 使用 GET或 POST 请求 发送数据](#15web-%E6%9C%8D%E5%8A%A1%E5%99%A8-part7-%E4%BD%BF%E7%94%A8-get%E6%88%96-post-%E8%AF%B7%E6%B1%82-%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE)
+    - [16.包管理器 npm](#16%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8-npm)
+    - [17.package.json 文件](#17packagejson-%E6%96%87%E4%BB%B6)
+    - [18.nodemon监控文件并重启服务](#18nodemon%E7%9B%91%E6%8E%A7%E6%96%87%E4%BB%B6%E5%B9%B6%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1)
 
 ---
 
@@ -496,7 +506,7 @@ unction startServer() {
 - 将路由、处理函数和主程序分离，单独存放
 - 分工明确，各司其职，方便管理
 
-## 15.web 服务器 part7 使用GET或POST请求 发送数据
+## 15.web 服务器 part7 使用 GET或 POST 请求 发送数据
 
 - [querystring - 查询字符串](http://nodejs.cn/api/querystring.html)
     - `var querystring = require('querystring')`
@@ -526,7 +536,7 @@ req.on("error", function (err) {
 // data = Buffer.concat(data).toString()
 ```
 
-## 16.包管理器npm
+## 16.包管理器 npm
 
 - [npm 官网](https://www.npmjs.com)
     - [搜索查看 express](https://www.npmjs.com/package/express)
@@ -546,10 +556,19 @@ echo '\n#alias for npm\nalias npm="npm --registry=https://registry.npm.taobao.or
 
 ## 17.package.json 文件
 
-- 记录项目中使用的包名，只要名称就行，发布时不用包内容了
-- `npm init` 提问式初始化项目信息，生成`package.json`文件
+- 记录项目中使用的包名，发布时不用包内容了，只要名称就行
+- `npm init` 提问式初始化项目信息，生成`package.json`文件，-y 全部默认
 - `npm install --save xxx`安装的同时，将信息写入package.json
 - `npm install --save-dev xxx`安装的同时，将信息写入package.json中的dev开发依赖
 - `npm view moduleNames` 查看node模块的package.json文件夹
-- `npm run start` 启动包，执行 package.json scripts 中的 start命令，还有stop restart test
-- `npm install` 安装package.json中记录的包
+- `npm run start` 启动包，执行 package.json scripts 中的 start 命令，还有 stop restart test
+- `npm install` 安装 package.json 中记录的包
+
+## 18.nodemon监控文件并重启服务
+
+- nodemon 用来监视应用中的任何文件更改并自动重启服务
+- 非常适合用在开发环境中，方便啊，不用手动操作了
+- 全局安装 `npm install -g nodemon`
+- 本地安装 `npm install --save-dev nodemon`
+- 启动应用 `nodemon [your node app]`
+- 获取修改 package.json 中的启动脚本，添加`nodemon app.js`， 用 npm start 直接启动，方便

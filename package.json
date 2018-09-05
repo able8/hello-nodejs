@@ -1,0 +1,20 @@
+{
+  "name": "hello-nodejs",
+  "version": "1.0.0",
+  "description": "轻松学 Node.js 基础篇 入门",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/able8/hello-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/able8/hello-nodejs/issues"
+  },
+  "homepage": "https://github.com/able8/hello-nodejs#readme"
+}
