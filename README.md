@@ -543,3 +543,13 @@ echo '\n#alias for npm\nalias npm="npm --registry=https://registry.npm.taobao.or
 ```
 
 - yarn 也是包管理器，更快下载速度
+
+## 17.package.json 文件
+
+- 记录项目中使用的包名，只要名称就行，发布时不用包内容了
+- `npm init` 提问式初始化项目信息，生成`package.json`文件
+- `npm install --save xxx`安装的同时，将信息写入package.json
+- `npm install --save-dev xxx`安装的同时，将信息写入package.json中的dev开发依赖
+- `npm view moduleNames` 查看node模块的package.json文件夹
+- `npm run start` 启动包，执行 package.json scripts 中的 start命令，还有stop restart test
+- `npm install` 安装package.json中记录的包
